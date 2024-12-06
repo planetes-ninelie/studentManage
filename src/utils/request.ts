@@ -10,11 +10,6 @@ let loadingInstance
 //请求拦截器
 request.interceptors.request.use((config) => {
   loadingInstance = ElLoading.service({ fullscreen: true })
-  //获取用户相关的小仓库
-  // const userStore = useUserStore()
-  // if (userStore.phone) {
-  //   config.headers.phone = userStore.phone
-  // }
   //返回配置对象
   return config
 })

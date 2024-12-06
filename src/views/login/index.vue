@@ -1,109 +1,19 @@
 <template>
   <div class="login_container">
     <transition name="el-zoom-in-center">
-      <el-form
-        class="login_form"
-        :model="loginForm"
-        :rules="rules"
-        ref="loginForms"
-        v-show="isLogin"
-      >
+      <el-form class="login_form" :model="loginForm" :rules="rules" ref="loginForms" v-show="isLogin">
         <h1>{{ title }}</h1>
         <el-form-item class="item" prop="username">
-          <el-input
-            class="input"
-            :prefix-icon="User"
-            placeholder="请输入账号"
-            v-model="loginForm.username"
-          ></el-input>
+          <el-input class="input" :prefix-icon="User" placeholder="请输入账号" v-model="loginForm.username"></el-input>
         </el-form-item>
         <el-form-item class="item" prop="password">
-          <el-input
-            class="input"
-            type="password"
-            placeholder="请输入密码"
-            :prefix-icon="Lock"
-            v-model="loginForm.password"
-            show-password
-          ></el-input>
+          <el-input class="input" type="password" placeholder="请输入密码" :prefix-icon="Lock" v-model="loginForm.password"
+            show-password></el-input>
         </el-form-item>
-        <!-- <el-form-item class="item-select">
-          <el-col :span="12" class="col-left">
-            <el-checkbox v-model="checked">自动登录</el-checkbox>
-          </el-col>
-          <el-col :span="12" class="col-right">
-            <span class="link">忘记密码</span>
-          </el-col>
-        </el-form-item> -->
         <el-form-item class="item">
-          <el-button
-            :loading="loading"
-            class="login_btn"
-            size="default"
-            @click="login"
-          >
+          <el-button :loading="loading" class="login_btn" size="default" @click="login">
             登录
           </el-button>
-        </el-form-item>
-        <el-form-item>
-          <el-col :span="24" class="register">
-            <span class="link" @click="register">注册账号</span>
-          </el-col>
-        </el-form-item>
-      </el-form>
-    </transition>
-
-    <transition name="el-zoom-in-center">
-      <el-form
-        class="login_form"
-        :model="registerForm"
-        :rules="rules"
-        ref="loginForms"
-        v-show="!isLogin"
-      >
-        <h2>注册账号</h2>
-        <el-form-item class="item" prop="username">
-          <el-input
-            class="input"
-            :prefix-icon="User"
-            placeholder="请输入账号"
-            v-model="registerForm.username"
-          ></el-input>
-        </el-form-item>
-        <el-form-item class="item" prop="password">
-          <el-input
-            class="input"
-            type="password"
-            placeholder="请输入密码"
-            :prefix-icon="Lock"
-            v-model="registerForm.password"
-            show-password
-          ></el-input>
-        </el-form-item>
-        <el-form-item class="item" prop="password">
-          <el-input
-            class="input"
-            type="password"
-            placeholder="请再次输入密码"
-            :prefix-icon="Lock"
-            v-model="registerForm.rawPassword"
-            show-password
-          ></el-input>
-        </el-form-item>
-        <el-form-item class="item">
-          <el-button
-            :loading="loading"
-            class="login_btn"
-            size="default"
-            @click="registerSubmit"
-          >
-            注册
-          </el-button>
-        </el-form-item>
-        <el-form-item>
-          <el-col :span="24" class="register">
-            <span class="link" @click="register">返回登录页</span>
-          </el-col>
         </el-form-item>
       </el-form>
     </transition>
@@ -196,27 +106,6 @@ const rules = {
 
 //标题
 const title = import.meta.env.VITE_APP_TITLE
-
-//切换场景
-const register = () => (isLogin.value = !isLogin.value)
-
-//注册
-const registerSubmit = async () => {
-  delete registerForm.id
-  const res = await reqAddOrUpdateUserData(registerForm)
-  if (res.code == 0) {
-    ElMessage({
-      type: 'success',
-      message: `注册用户昵称${registerForm.username}成功!`,
-    })
-    register()
-  } else {
-    ElMessage({
-      type: 'error',
-      message: res.msg || `注册用户名${registerForm.username}失败!`,
-    })
-  }
-}
 </script>
 
 <style scoped lang="scss">

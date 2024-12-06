@@ -9,4 +9,4 @@ npm run dev
 - 构建工具： Vite
 - 代码工具：ESlint + prettier
 - 状态管理： Pinia
-- 组件库： Element-plus + ECharts
+- 组件库： Element-plus

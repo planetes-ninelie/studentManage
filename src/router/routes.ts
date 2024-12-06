@@ -45,10 +45,6 @@ export const constantRoute = [
       icon: 'DocumentDelete',
     },
   },
-]
-
-//异步路由
-export const asyncRoute = [
   {
     //用户管理
     path: '/user',
@@ -68,99 +64,6 @@ export const asyncRoute = [
           title: '用户管理',
           hidden: false,
           icon: 'UserFilled',
-        },
-      },
-    ],
-  },
-
-  {
-    //商家管理
-    path: '/store',
-    component: () => import('@/layout/index.vue'),
-    name: 'Store',
-    meta: {
-      title: '商家管理',
-      hidden: false,
-      icon: 'ShoppingCart',
-    },
-    children: [
-      {
-        path: '/store/manage',
-        component: () => import('@/views/store/index.vue'),
-        name: 'StoreManage',
-        meta: {
-          title: '商家管理',
-          hidden: false,
-          icon: 'ShoppingCart',
-        },
-      },
-    ],
-  },
-  {
-    //菜品管理
-    path: '/dish',
-    component: () => import('@/layout/index.vue'),
-    name: 'Dish',
-    meta: {
-      title: '菜品管理',
-      hidden: false,
-      icon: 'Dish',
-    },
-    children: [
-      {
-        path: '/dish/manage',
-        component: () => import('@/views/dish/index.vue'),
-        name: 'DishManage',
-        meta: {
-          title: '菜品管理',
-          hidden: false,
-          icon: 'Dish',
-        },
-      },
-    ],
-  },
-  {
-    //订单管理
-    path: '/order',
-    component: () => import('@/layout/index.vue'),
-    name: 'Order',
-    meta: {
-      title: '订单管理',
-      hidden: false,
-      icon: 'Document',
-    },
-    children: [
-      {
-        path: '/order/manage',
-        component: () => import('@/views/order/index.vue'),
-        name: 'OrderManage',
-        meta: {
-          title: '订单管理',
-          hidden: false,
-          icon: 'Document',
-        },
-      },
-    ],
-  },
-  {
-    //系统设置
-    path: '/setting',
-    component: () => import('@/layout/index.vue'),
-    name: 'Setting',
-    meta: {
-      title: '系统设置',
-      hidden: false,
-      icon: 'Tools',
-    },
-    children: [
-      {
-        path: '/setting/manage',
-        component: () => import('@/views/setting/index.vue'),
-        name: 'SettingManage',
-        meta: {
-          title: '系统设置',
-          hidden: false,
-          icon: 'Tools',
         },
       },
     ],

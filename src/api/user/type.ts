@@ -30,13 +30,6 @@ export interface userInfoResponseData extends ResponseData {
     username: string
   }
 }
-
-//更换头像携带的ts类型
-export interface updateAvatar {
-  id: number
-  avatar: string
-}
-
 //获取单个用户的数据
 export interface record {
   id: string | number | undefined
@@ -62,5 +55,5 @@ export interface usersListDto {
   username: string
   role: number
   page?: number
-  pageSize?: number
+  size?: number
 }

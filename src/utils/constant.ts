@@ -12,44 +12,6 @@ export const Sex = {
   1: '女',
 }
 
-//商家状态
-export const StoreStatus = {
-  0: '停业',
-  1: '正常',
-}
-
 export const RouteInfo = {
-  1: [
-    'User',
-    'Store',
-    'Dish',
-    'Order',
-    'Setting',
-    'UserManage',
-    'StoreManage',
-    'DishManage',
-    'OrderManage',
-    'SettingManage',
-  ],
-  2: [
-    'Store',
-    'Dish',
-    'Order',
-    'Setting',
-    'StoreManage',
-    'DishManage',
-    'OrderManage',
-    'SettingManage',
-  ],
-  3: ['Store', 'Dish', 'Order', 'StoreManage', 'DishManage', 'OrderManage'],
-  4: [
-    'Store',
-    'Dish',
-    'Order',
-    'Setting',
-    'StoreManage',
-    'DishManage',
-    'OrderManage',
-    'SettingManage',
-  ],
+  1: ['User', 'UserManage'],
 }

@@ -10,14 +10,14 @@ import useUserStore from './store/modules/user'
 //引入大仓库
 import pinia from './store'
 import setting from './setting'
-import { GET_INFO } from './utils/token'
+import { GET_USERNAME } from './utils/token'
 const userStore = useUserStore(pinia)
 
 //全局前置守卫
 router.beforeEach(async (to: any, _from: any, next: any) => {
   document.title = setting.title + '-' + to.meta.title
   nprogress.start()
-  const id = GET_INFO()
+  const id = GET_USERNAME()
   const rule = id !== null && id !== ''
   if (rule) {
     if (to.path == '/login') {

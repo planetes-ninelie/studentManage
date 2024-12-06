@@ -11,23 +11,7 @@ import {
   GET_USERNAME,
 } from '@/utils/token'
 //引入常量路由
-import { constantRoute, asyncRoute, anyRoute } from '@/router/routes'
-//引入深拷贝方法
-import cloneDeep from 'lodash/cloneDeep'
-import router from '@/router'
-import { RouteInfo } from '@/utils/constant'
-
-//过滤异步路由的方法
-function filterAsyncRoute(asyncRoute: any, routes: any) {
-  return asyncRoute.filter((item: any) => {
-    if (routes.includes(item.name)) {
-      if (item.children && item.children.length > 0) {
-        item.children = filterAsyncRoute(item.children, routes)
-      }
-      return true
-    }
-  })
-}
+import { constantRoute, anyRoute } from '@/router/routes'
 
 //创建用户小仓库
 const useUserStore = defineStore('User', {
@@ -45,9 +29,8 @@ const useUserStore = defineStore('User', {
     //用户登录的方法
     async userLogin(data: loginFormData) {
       const result: loginResponseData = await reqLogin(data)
-      if (result.code == 0) {
-        const res = result.data
-        SET_INFO(res.id, res.role, res.username, res.sex, res.phone)
+      if (result == 'success') {
+        SET_INFO('', '', 'admin', '', '')
         this.getInfo()
         return 'ok'
       } else {
@@ -56,17 +39,7 @@ const useUserStore = defineStore('User', {
     },
     //获取信息
     async getInfo() {
-      const routesEss = RouteInfo[GET_ROLE()]
-      const userAsyncRoutes = filterAsyncRoute(cloneDeep(asyncRoute), [
-        ...routesEss,
-      ])
-      // const userAsyncRoutes = [...routesTest]
-      this.menuRoutes = [...constantRoute, ...userAsyncRoutes, ...anyRoute]
-      const routes = [...userAsyncRoutes, ...anyRoute]
-      sessionStorage.setItem('ROUTES', JSON.stringify(routes))
-      routes.forEach((route: any) => {
-        router.addRoute(route)
-      })
+      this.menuRoutes = [...constantRoute, ...anyRoute]
       return 'ok'
     },
     //退出登录
