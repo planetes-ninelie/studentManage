@@ -41,8 +41,7 @@ export const reqUsersData = (data: usersListDto) => {
 //新增用户数据接口与更新用户数据接口
 export const reqAddOrUpdateUserData = (data: record) => {
   data.sex = +data.sex
-  if (data.id)
-    return request.put<any, any>(API.UPDATEUSERDATA_URL + data.id, data)
+  if (data.id) return request.put<any, any>(API.STU_URL + data.id, data)
   else return request.post<any, any>(API.ADDUSERDATA_URL, data)
 }
 
