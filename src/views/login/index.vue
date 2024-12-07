@@ -1,17 +1,39 @@
 <template>
   <div class="login_container">
     <transition name="el-zoom-in-center">
-      <el-form class="login_form" :model="loginForm" :rules="rules" ref="loginForms" v-show="isLogin">
+      <el-form
+        class="login_form"
+        :model="loginForm"
+        :rules="rules"
+        ref="loginForms"
+        v-show="isLogin"
+      >
         <h1>{{ title }}</h1>
         <el-form-item class="item" prop="username">
-          <el-input class="input" :prefix-icon="User" placeholder="请输入账号" v-model="loginForm.username"></el-input>
+          <el-input
+            class="input"
+            :prefix-icon="User"
+            placeholder="请输入账号"
+            v-model="loginForm.username"
+          ></el-input>
         </el-form-item>
         <el-form-item class="item" prop="password">
-          <el-input class="input" type="password" placeholder="请输入密码" :prefix-icon="Lock" v-model="loginForm.password"
-            show-password></el-input>
+          <el-input
+            class="input"
+            type="password"
+            placeholder="请输入密码"
+            :prefix-icon="Lock"
+            v-model="loginForm.password"
+            show-password
+          ></el-input>
         </el-form-item>
         <el-form-item class="item">
-          <el-button :loading="loading" class="login_btn" size="default" @click="login">
+          <el-button
+            :loading="loading"
+            class="login_btn"
+            size="default"
+            @click="login"
+          >
             登录
           </el-button>
         </el-form-item>

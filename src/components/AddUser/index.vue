@@ -1,16 +1,36 @@
 <template>
-  <el-dialog v-model="props.drawerUser" :title="props.isUpdate ? '修改用户' : '添加用户'" width="500"
-    :before-close="cancelUserDrawer" destroy-on-close>
+  <el-dialog
+    v-model="props.drawerUser"
+    :title="props.isUpdate ? '修改用户' : '添加用户'"
+    width="500"
+    :before-close="cancelUserDrawer"
+    destroy-on-close
+  >
     <template #default>
-      <el-form :model="addUserForm" :rules="rules" ref="formRef" label-width="auto">
+      <el-form
+        :model="addUserForm"
+        :rules="rules"
+        ref="formRef"
+        label-width="auto"
+      >
         <el-form-item label="学生姓名" prop="name">
-          <el-input placeholder="请填写学生姓名" v-model="addUserForm.name"></el-input>
+          <el-input
+            placeholder="请填写学生姓名"
+            v-model="addUserForm.name"
+          ></el-input>
         </el-form-item>
         <el-form-item label="学生年龄" prop="age">
-          <el-input placeholder="请填写学生年龄" v-model="addUserForm.age" type="number"></el-input>
+          <el-input
+            placeholder="请填写学生年龄"
+            v-model="addUserForm.age"
+            type="number"
+          ></el-input>
         </el-form-item>
         <el-form-item label="学生年级" prop="grade">
-          <el-input placeholder="请填写学生年级" v-model="addUserForm.grade"></el-input>
+          <el-input
+            placeholder="请填写学生年级"
+            v-model="addUserForm.grade"
+          ></el-input>
         </el-form-item>
       </el-form>
     </template>
@@ -47,7 +67,7 @@ const props = defineProps({
   rowData: {
     type: Object,
     require: false,
-  }
+  },
 })
 const emits = defineEmits<{ (e: string, value: boolean): void }>()
 watch(

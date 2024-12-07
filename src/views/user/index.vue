@@ -81,8 +81,7 @@ let total = ref<number>(0)
 let usersData = ref<record[]>([])
 //搜索用户
 let userSearchDto = ref<usersListDto>({
-  username: '',
-  role: '',
+  username: ''
 })
 // 角色列表
 let roleOptions = ref<string[]>([])
@@ -129,7 +128,6 @@ const editUser = (val, row) => {
 const reset = () => {
   Object.assign(userSearchDto.value, {
     username: '',
-    role: '',
     currentPage: pageNo.value,
     pageSize: pageSize.value,
   })

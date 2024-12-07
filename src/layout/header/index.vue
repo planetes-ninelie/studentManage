@@ -19,10 +19,17 @@
       </template>
     </el-dropdown>
     <!-- 新增用户或修改用户抽屉 -->
-    <AddUser :drawerUser="drawerUser" @update:drawerUser="(newVal) => {
-        drawerUser = newVal
-      }
-      " :isUpdate="true" :rowData="rowData" :roleOptions="roleOptions"></AddUser>
+    <AddUser
+      :drawerUser="drawerUser"
+      @update:drawerUser="
+        (newVal) => {
+          drawerUser = newVal
+        }
+      "
+      :isUpdate="true"
+      :rowData="rowData"
+      :roleOptions="roleOptions"
+    ></AddUser>
   </div>
 </template>
 

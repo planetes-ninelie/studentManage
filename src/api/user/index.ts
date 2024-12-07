@@ -13,6 +13,8 @@ enum API {
   LOGIN_URL = '/common/login',
   //获取用户表单数据url
   USERSDATA_URL = '/students/name',
+  //获取所有学生列表
+  GETLIST_URL = '/students/getList',
   //新增用户数据url
   ADDUSERDATA_URL = '/students/add',
   //更新用户和删除数据url
@@ -25,17 +27,15 @@ export const reqLogin = (data: loginFormData) =>
 
 //获取用户表单数据接口
 export const reqUsersData = (data: usersListDto) => {
-  let url = ''
   if (data.username == '') {
-    url = API.USERSDATA_URL + `?page=${data.page}&size=${data.size}`
+    const url = API.GETLIST_URL + `?page=${data.page}&size=${data.size}`
+    return request.get<any, any>(url)
   } else {
-    url =
+    const url =
       API.USERSDATA_URL +
-      '/' +
-      data.username +
-      `?page=${data.page}&size=${data.size}`
+      `/${data.username}?page=${data.page}&size=${data.size}`
+    return request.post<any, any>(url)
   }
-  return request.get<any, any>(url)
 }
 
 //新增用户数据接口与更新用户数据接口
@@ -43,7 +43,7 @@ export const reqAddOrUpdateUserData = (data: record) => {
   data.sex = +data.sex
   if (data.id)
     return request.put<any, any>(API.UPDATEUSERDATA_URL + data.id, data)
-  else return request.post<any, any>(API.STU_URL, data)
+  else return request.post<any, any>(API.ADDUSERDATA_URL, data)
 }
 
 //根据id删除用户信息接口
