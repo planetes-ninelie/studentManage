@@ -1,39 +1,18 @@
 <template>
   <div class="login_container">
     <transition name="el-zoom-in-center">
-      <el-form
-        class="login_form"
-        :model="loginForm"
-        :rules="rules"
-        ref="loginForms"
-        v-show="isLogin"
-      >
+      <el-form class="login_form" :model="loginForm" :rules="rules" ref="loginForms" v-show="isLogin">
         <h1>{{ title }}</h1>
+        <h2 class="animation">Hello!欢迎使用{{ title }}</h2>
         <el-form-item class="item" prop="username">
-          <el-input
-            class="input"
-            :prefix-icon="User"
-            placeholder="请输入账号"
-            v-model="loginForm.username"
-          ></el-input>
+          <el-input class="input" :prefix-icon="User" placeholder="请输入账号" v-model="loginForm.username"></el-input>
         </el-form-item>
         <el-form-item class="item" prop="password">
-          <el-input
-            class="input"
-            type="password"
-            placeholder="请输入密码"
-            :prefix-icon="Lock"
-            v-model="loginForm.password"
-            show-password
-          ></el-input>
+          <el-input class="input" type="password" placeholder="请输入密码" :prefix-icon="Lock" v-model="loginForm.password"
+            show-password></el-input>
         </el-form-item>
         <el-form-item class="item">
-          <el-button
-            :loading="loading"
-            class="login_btn"
-            size="default"
-            @click="login"
-          >
+          <el-button :loading="loading" class="login_btn" size="default" @click="login">
             登录
           </el-button>
         </el-form-item>
@@ -87,7 +66,7 @@ const login = async () => {
   try {
     const res = await userStore.userLogin(loginForm)
     let redirect: any = $route.query.redirect
-    $router.push({ path: redirect || '/' })
+    $router.push({ path: redirect || '/user' })
     ElNotification({
       type: 'success',
       message: '欢迎回来',
@@ -143,27 +122,69 @@ const title = import.meta.env.VITE_APP_TITLE
 
 .login_form {
   position: relative;
-  top: 20vh;
+  top: 25vh;
+  left: 20vw;
   width: 450px;
-  height: 350px;
-  background-color: rgba($color: #000000, $alpha: 0);
+  height: 400px;
+  background-color: rgba($color: #ffffff, $alpha: 1);
   background-size: cover;
   padding: 40px;
   border-radius: 20px;
   text-align: center;
+  // border: 1px solid #4d6673;
 
   h1 {
     margin: 20px 0;
-    color: #00aaff;
+    color: #4d6673;
     font-size: 40px;
     font-weight: 600;
   }
 
   h2 {
     margin: 20px 0;
-    color: #00aaff;
-    font-size: 25px;
-    font-weight: 600;
+    color: #899faa;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .animation {
+    position: relative;
+    margin: 20px auto;
+    overflow: hidden;
+    width: 0;
+    white-space: nowrap;
+    animation: width 3s steps(30) forwards;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0px;
+      height: 20px;
+      border-right: 2px solid #119a9a;
+      animation: showInfinite 0.1s 30 both;
+
+      @keyframes showInfinite {
+
+        0%,
+        50% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 0;
+        }
+      }
+    }
+
+    @keyframes width {
+      0% {
+        width: 0;
+      }
+
+      100% {
+        width: 270px;
+      }
+    }
   }
 
   .item {
@@ -196,7 +217,7 @@ const title = import.meta.env.VITE_APP_TITLE
 
   .login_btn {
     width: 100%;
-    background-color: #00aaff;
+    background-color: #748e9c;
     color: white;
     font-size: 20px;
     letter-spacing: 5px;
@@ -209,7 +230,7 @@ const title = import.meta.env.VITE_APP_TITLE
 
 .link {
   font-size: 18px;
-  color: #00aaff;
+  color: #4d6673;
 
   &:hover {
     cursor: pointer;
@@ -219,11 +240,11 @@ const title = import.meta.env.VITE_APP_TITLE
 .el-checkbox {
   color: #13c2c2;
   --el-checkbox-font-size: 18px;
-  --el-color-primary: #00aaff;
+  --el-color-primary: #4d6673;
 }
 
 .el-input {
-  --el-color-primary: #00aaff;
+  --el-color-primary: #4d6673;
 }
 
 .transition-box {

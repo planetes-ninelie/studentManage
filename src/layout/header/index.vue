@@ -1,13 +1,12 @@
 <template>
   <div class="container">
-    <el-icon>
-      <Fold />
-    </el-icon>
-    <h2>{{ setting.title }}</h2>
-
+    <div style="display: flex;align-items: center;">
+      <img src="@/assets/icons/logo.svg" style="width: 40px;margin-right: 20px;" alt="">
+      <h2>{{ setting.title }}</h2>
+    </div>
     <el-dropdown>
       <span class="el-dropdown-link right">
-        欢迎：{{ role }} {{ username }}
+        {{ role }} {{ username }}
         <el-icon class="el-icon--right">
           <arrow-down />
         </el-icon>
@@ -19,17 +18,10 @@
       </template>
     </el-dropdown>
     <!-- 新增用户或修改用户抽屉 -->
-    <AddUser
-      :drawerUser="drawerUser"
-      @update:drawerUser="
-        (newVal) => {
-          drawerUser = newVal
-        }
-      "
-      :isUpdate="true"
-      :rowData="rowData"
-      :roleOptions="roleOptions"
-    ></AddUser>
+    <AddUser :drawerUser="drawerUser" @update:drawerUser="(newVal) => {
+      drawerUser = newVal
+    }
+      " :isUpdate="true" :rowData="rowData" :roleOptions="roleOptions"></AddUser>
   </div>
 </template>
 
@@ -72,7 +64,7 @@ const logout = async () => {
 
 .right {
   background-color: white;
-  color: #6b717f;
+  color: #899faa;
   height: 25px;
   line-height: 25px;
   padding: 0 15px;

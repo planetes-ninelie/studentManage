@@ -5,13 +5,6 @@
         <Header />
       </el-header>
       <el-container>
-        <el-aside width="200px">
-          <!-- 菜单组件 -->
-          <el-menu :default-active="$route.path">
-            <!-- 根据路由动态生成菜单 -->
-            <Menu :menuList="userStore.menuRoutes"></Menu>
-          </el-menu>
-        </el-aside>
         <el-main>
           <!-- 二级出口 -->
           <Main></Main>
@@ -58,7 +51,13 @@ export default {
     top: 0;
     position: sticky;
     z-index: 999;
-    background-color: #00aaff;
+    background-color: #899faa;
+  }
+
+  Main {
+    margin: 20px 250px;
+    background-color: #899faa2d;
+    border-radius: 20px;
   }
 }
 </style>

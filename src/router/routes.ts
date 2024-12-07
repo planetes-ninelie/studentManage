@@ -57,7 +57,7 @@ export const constantRoute = [
     },
     children: [
       {
-        path: '/user/manage',
+        path: '/user',
         component: () => import('@/views/user/index.vue'),
         name: 'UserManage',
         meta: {
